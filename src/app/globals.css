@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
+/* ========================================
+   Code with Mosh 配色方案 - 暗色主题（默认）
+   参考: https://codewithmosh.com
+   ======================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 主品牌色 - Vibrant Violet */
+  --color-primary: #6E26FF;
+  --color-primary-hover: #8B4FFF;
+
+  /* 背景色系 - Deep Navy Black */
+  --color-bg-main: #03050A;
+  --color-bg-card: #000000;
+  --color-bg-elevated: #0A0C12;
+
+  /* 边框色 */
+  --color-border: #1F1F1F;
+  --color-border-hover: #2F2F2F;
+
+  /* 文字色 */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+
+  /* 装饰色 - 蓝色光晕 */
+  --color-accent-blue: #0055FF;
+
+  /* 状态色 */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+}
+
+/* ========================================
+   亮色主题
+   ======================================== */
+
+[data-theme="light"] {
+  /* 主品牌色 - 保持一致 */
+  --color-primary: #6E26FF;
+  --color-primary-hover: #8B4FFF;
+
+  /* 背景色系 - Light */
+  --color-bg-main: #FFFFFF;
+  --color-bg-card: #F8F9FA;
+  --color-bg-elevated: #F0F1F3;
+
+  /* 边框色 */
+  --color-border: #E5E7EB;
+  --color-border-hover: #D1D5DB;
+
+  /* 文字色 */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: rgba(26, 26, 26, 0.7);
+  --color-text-muted: rgba(26, 26, 26, 0.5);
+
+  /* 装饰色 - 降低光晕效果 */
+  --color-accent-blue: #0055FF;
+
+  /* 状态色 - 保持一致 */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* 主题颜色映射 */
+  --color-primary: var(--color-primary);
+  --color-background: var(--color-bg-main);
+  --color-foreground: var(--color-text-primary);
+
+  /* 字体 */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: var(--color-bg-main);
+  color: var(--color-text-primary);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 全局滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
 }
