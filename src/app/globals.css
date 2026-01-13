@@ -81,9 +81,18 @@
 body {
   background: var(--color-bg-main);
   color: var(--color-text-primary);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+
+  /* 主题切换平滑过渡动画 🎨 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 全局过渡动画优化 */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
 /* 全局滚动条样式 */

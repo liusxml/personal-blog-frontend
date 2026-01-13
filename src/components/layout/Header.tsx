@@ -1,8 +1,19 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import ThemeToggle from '@/components/ThemeToggle';
+import { useState } from 'react';
 
 export default function Header() {
+    const [isSpinning, setIsSpinning] = useState(false);
+
+    const handleLogoClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setIsSpinning(true);
+        setTimeout(() => setIsSpinning(false), 1000);
+    };
+
     return (
         <header
             className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -13,13 +24,18 @@ export default function Header() {
         >
             <nav className="container mx-auto flex h-16 items-center justify-between px-6">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3">
+                <Link href="/" className="flex items-center gap-3" onClick={handleLogoClick}>
                     <Image
                         src="/blog-logo.png"
                         alt="Blog Logo"
                         width={48}
                         height={48}
                         className="rounded-full"
+                        style={{
+                            filter: 'drop-shadow(0 0 8px rgba(255, 165, 0, 0.4))',
+                            transform: isSpinning ? 'rotate(360deg)' : 'rotate(0deg)',
+                            transition: 'transform 1s ease-in-out',
+                        }}
                         quality={100}
                         unoptimized
                         priority
