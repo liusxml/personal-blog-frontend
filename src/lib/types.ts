@@ -7,8 +7,8 @@
 export interface PageQuery {
     current?: number;
     size?: number;
-    categoryId?: number;
-    tagId?: number;
+    categoryId?: string;
+    tagId?: string;
 }
 
 // 分页结果
@@ -33,7 +33,7 @@ export interface Result<T> {
 // ============================================
 
 export interface ArticleListVO {
-    id: number;
+    id: string;
     title: string;
     summary: string;
     coverImage?: string;
@@ -47,29 +47,49 @@ export interface ArticleListVO {
 }
 
 export interface ArticleDetailVO {
-    id: number;
+    id: string;
     title: string;
     content: string;
     contentHtml: string;
     summary: string;
     coverImage?: string;
-    categoryId?: number;
+    categoryId?: string;
     categoryName?: string;
     tags?: TagVO[];
-    authorId: number;
-    authorName: string;
+    authorId?: string;
+    authorName?: string;
     authorAvatar?: string;
     publishTime: string;
     updateTime: string;
-    viewCount: number;
-    likeCount: number;
-    commentCount: number;
+    viewCount?: number;
+    likeCount?: number;
+    commentCount?: number;
 }
 
 export interface TagVO {
-    id: number;
+    id: string;
     name: string;
+    slug: string;
     color?: string;
+    articleCount: number;
+}
+
+// ============================================
+// 分类相关类型
+// ============================================
+
+export interface CategoryVO {
+    id: string;
+    name: string;
+    slug: string;
+    description?: string;
+    sortOrder: number;
+    articleCount: number;
+    parentId?: string;
+}
+
+export interface CategoryTreeVO extends CategoryVO {
+    children: CategoryTreeVO[];
 }
 
 // ============================================
@@ -82,16 +102,16 @@ export enum CommentTargetType {
 }
 
 export interface CommentVO {
-    id: number;
+    id: string;
     content: string;
     contentHtml: string;
-    userId: number;
+    userId: string;
     userName: string;
     userAvatar?: string;
     targetType: CommentTargetType;
-    targetId: number;
-    parentId?: number;
-    replyToUserId?: number;
+    targetId: string;
+    parentId?: string;
+    replyToUserId?: string;
     replyToUserName?: string;
     likeCount: number;
     createTime: string;
@@ -106,9 +126,9 @@ export interface CommentTreeVO extends CommentVO {
 export interface CommentDTO {
     content: string;
     targetType: CommentTargetType;
-    targetId: number;
-    parentId?: number;
-    replyToUserId?: number;
+    targetId: string;
+    parentId?: string;
+    replyToUserId?: string;
 }
 
 // ============================================
@@ -116,7 +136,7 @@ export interface CommentDTO {
 // ============================================
 
 export interface UserVO {
-    id: number;
+    id: string;
     username: string;
     email: string;
     nickname?: string;

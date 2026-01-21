@@ -1,11 +1,12 @@
 import ArticleList from '@/components/article/ArticleList';
 import LiveClock from '@/components/LiveClock';
 import { getArticles } from '@/lib/api';
+import { ArticleListVO } from '@/lib/types';
 
 export default async function Home() {
   // 获取文章列表（服务端渲染）
-  let articles = [];
-  let error = null;
+  let articles: ArticleListVO[] = [];
+  let error: string | null = null;
 
   try {
     const pageResult = await getArticles({ current: 1, size: 12 });
