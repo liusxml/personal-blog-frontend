@@ -45,8 +45,18 @@ export default function LiveClock() {
         return () => clearInterval(interval);
     }, []);
 
+    // 防止水合不匹配：渲染骨架而不是 null
     if (!mounted) {
-        return null; // 防止 SSR 不匹配
+        return (
+            <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center justify-center gap-4">
+                    <TimeUnitSkeleton />
+                    <TimeUnitSkeleton />
+                    <TimeUnitSkeleton />
+                    <TimeUnitSkeleton />
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -102,6 +112,31 @@ export default function LiveClock() {
                     测试午夜
                 </button>
             </div>
+        </div>
+    );
+}
+
+// 骨架占位组件
+function TimeUnitSkeleton() {
+    return (
+        <div
+            className="flex flex-col items-center justify-center rounded-xl border px-6 py-6 animate-pulse"
+            style={{
+                backgroundColor: 'var(--color-bg-card)',
+                borderColor: 'var(--color-border)',
+                minWidth: '132px',
+                minHeight: '122px',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            }}
+        >
+            <div
+                className="h-14 w-16 rounded"
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+            />
+            <div
+                className="mt-2 h-4 w-8 rounded"
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
+            />
         </div>
     );
 }

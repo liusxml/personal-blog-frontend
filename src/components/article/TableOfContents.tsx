@@ -34,28 +34,37 @@ export default function TableOfContents({ content }: Props) {
     useEffect(() => {
         if (toc.length === 0) return;
 
-        // 使用 IntersectionObserver 监听标题可见性
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveId(entry.target.id);
-                    }
-                });
-            },
-            {
-                rootMargin: '-80px 0px -80% 0px',
-                threshold: 1.0
-            }
-        );
+        // 等待浏览器完成初始滚动位置恢复
+        const setupObserver = () => {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    // 只在用户主动滚动时更新 activeId
+                    // 避免在页面加载时触发
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            setActiveId(entry.target.id);
+                        }
+                    });
+                },
+                {
+                    rootMargin: '-80px 0px -80% 0px',
+                    threshold: 1.0
+                }
+            );
 
-        // 给观察器一些时间等待 DOM 渲染
-        setTimeout(() => {
+            // 等待 DOM 完全渲染和浏览器滚动恢复
             const headingElements = document.querySelectorAll('h1[id], h2[id], h3[id]');
             headingElements.forEach((el) => observer.observe(el));
-        }, 100);
 
-        return () => observer.disconnect();
+            return observer;
+        };
+
+        // 延迟设置 observer，让浏览器先完成滚动恢复
+        const timer = setTimeout(setupObserver, 500);
+
+        return () => {
+            clearTimeout(timer);
+        };
     }, [toc]);
 
     const scrollToHeading = useCallback((id: string) => {

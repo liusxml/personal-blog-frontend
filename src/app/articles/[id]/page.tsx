@@ -6,6 +6,7 @@ import RelatedArticles from '@/components/article/RelatedArticles';
 import CommentSection from '@/components/comment/CommentSection';
 import ReadingProgress from '@/components/article/ReadingProgress';
 import ScrollToTop from '@/components/article/ScrollToTop';
+import ScrollRestoration from '@/components/ScrollRestoration';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -85,6 +86,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
     return (
         <>
+            <ScrollRestoration />
             <ReadingProgress />
             <main className="container mx-auto px-6 py-12">
                 <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 max-w-6xl mx-auto">
