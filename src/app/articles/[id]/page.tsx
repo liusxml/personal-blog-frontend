@@ -90,14 +90,16 @@ export default async function ArticlePage({ params }: PageProps) {
             <ReadingProgress />
             <main className="container mx-auto px-6 py-12">
                 <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 max-w-6xl mx-auto">
+                    {/* 左侧目录 */}
+                    <aside className="hidden xl:block w-64 shrink-0">
+                        <TableOfContents content={article.content} />
+                    </aside>
+                    {/* 右侧文章内容 */}
                     <article className="flex-1 min-w-0 max-w-4xl">
                         <ArticleContent article={article} />
                         <RelatedArticles articles={relatedArticles} />
                         <CommentSection articleId={article.id} />
                     </article>
-                    <aside className="hidden xl:block w-64 shrink-0">
-                        <TableOfContents content={article.content} />
-                    </aside>
                 </div>
             </main>
             <ScrollToTop />

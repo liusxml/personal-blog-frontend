@@ -145,7 +145,7 @@ export default function ArticleContent({ article }: Props) {
                                         boxShadow: `0 0 20px ${isNote ? 'rgba(59, 130, 246, 0.1)' :
                                             isWarning ? 'rgba(234, 179, 8, 0.1)' :
                                                 isTip ? 'rgba(34, 197, 94, 0.1)' :
-                                                    'rgba(110, 38, 255, 0.1)'
+                                                    'rgba(255, 158, 0, 0.1)'
                                             }`
                                     }}
                                     {...props}
@@ -160,8 +160,8 @@ export default function ArticleContent({ article }: Props) {
                                 className="w-full border-collapse my-10 shadow-2xl rounded-xl overflow-hidden"
                                 style={{
                                     borderColor: 'var(--color-border)',
-                                    background: 'linear-gradient(to bottom, rgba(110, 38, 255, 0.05), transparent)',
-                                    boxShadow: '0 0 40px rgba(110, 38, 255, 0.15), 0 20px 60px rgba(0, 0, 0, 0.4)'
+                                    background: 'linear-gradient(to bottom, rgba(26, 77, 92, 0.15), transparent)',
+                                    boxShadow: '0 0 40px rgba(26, 77, 92, 0.25), 0 20px 60px rgba(0, 0, 0, 0.4)'
                                 }}
                                 {...props}
                             />
@@ -169,9 +169,9 @@ export default function ArticleContent({ article }: Props) {
                         thead: ({ node, ...props }) => (
                             <thead
                                 style={{
-                                    background: 'linear-gradient(135deg, rgba(110, 38, 255, 0.2), rgba(110, 38, 255, 0.1))',
-                                    borderBottom: '2px solid var(--color-primary)',
-                                    boxShadow: '0 4px 20px rgba(110, 38, 255, 0.2)'
+                                    background: 'linear-gradient(135deg, rgba(26, 77, 92, 0.3), rgba(26, 77, 92, 0.15))',
+                                    borderBottom: '2px solid #1A4D5C',
+                                    boxShadow: '0 4px 20px rgba(26, 77, 92, 0.3)'
                                 }}
                                 {...props}
                             />
@@ -182,7 +182,7 @@ export default function ArticleContent({ article }: Props) {
                                 style={{
                                     borderColor: 'var(--color-border)',
                                     color: 'var(--color-text-primary)',
-                                    textShadow: '0 0 10px rgba(110, 38, 255, 0.3)'
+                                    textShadow: '0 0 10px rgba(26, 77, 92, 0.5)'
                                 }}
                                 {...props}
                             />

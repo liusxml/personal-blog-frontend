@@ -6,28 +6,39 @@
    ======================================== */
 
 :root {
-  /* 主品牌色 - Vibrant Violet */
-  --color-primary: #6E26FF;
-  --color-primary-hover: #8B4FFF;
+  /* ========================================
+     霓虹鸟主题配色（基于 Logo）
+     ======================================== */
 
-  /* 背景色系 - Deep Navy Black */
-  --color-bg-main: #03050A;
-  --color-bg-card: #000000;
-  --color-bg-elevated: #0A0C12;
+  /* === 主色调（橙金系）=== */
+  --color-primary: #FF9E00;
+  --color-primary-hover: #FFC857;
 
-  /* 边框色 */
-  --color-border: #1F1F1F;
-  --color-border-hover: #2F2F2F;
+  /* === 强调色（深橙）=== */
+  --color-accent: #E68900;
+  --color-accent-light: #FFB627;
 
-  /* 文字色 */
+  /* === 交互色（霓虹蓝）=== */
+  --color-interactive: #0055FF;
+
+  /* === 背景色系（深灰蓝）=== */
+  --color-bg-main: #0F1419;
+  --color-bg-card: #1A1D24;
+  --color-bg-elevated: #252830;
+
+  /* === 边框色 === */
+  --color-border: rgba(255, 158, 0, 0.2);
+  --color-border-hover: rgba(255, 158, 0, 0.4);
+
+  /* === 文字色 === */
   --color-text-primary: #FFFFFF;
   --color-text-secondary: rgba(255, 255, 255, 0.7);
   --color-text-muted: rgba(255, 255, 255, 0.5);
 
-  /* 装饰色 - 蓝色光晕 */
+  /* === 装饰色 - 霓虹蓝 === */
   --color-accent-blue: #0055FF;
 
-  /* 状态色 */
+  /* === 状态色 === */
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
@@ -73,12 +84,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: rgba(255, 0, 110, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-border-hover);
+  background: rgba(255, 0, 110, 0.7);
 }
 
 /* 文章内链接增强 */
@@ -106,12 +117,12 @@ body {
 }
 
 .prose pre::-webkit-scrollbar-thumb {
-  background: rgba(110, 38, 255, 0.5);
+  background: rgba(255, 0, 110, 0.5);
   border-radius: 4px;
 }
 
 .prose pre::-webkit-scrollbar-thumb:hover {
-  background: rgba(110, 38, 255, 0.7);
+  background: rgba(255, 0, 110, 0.7);
 }
 
 /* 按钮呼吸动画 */
@@ -119,11 +130,11 @@ body {
 
   0%,
   100% {
-    box-shadow: 0 8px 32px rgba(110, 38, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(255, 158, 0, 0.4);
   }
 
   50% {
-    box-shadow: 0 8px 32px rgba(110, 38, 255, 0.6), 0 0 20px rgba(110, 38, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(255, 158, 0, 0.6), 0 0 20px rgba(255, 158, 0, 0.4);
   }
 }
 
