@@ -1,74 +1,63 @@
 import Link from 'next/link';
-import type { ArticleListVO } from '@/lib/types';
+import Image from 'next/image';
+import { ArticleListVO } from '@/lib/types';
 
-interface ArticleCardProps {
+interface Props {
     article: ArticleListVO;
 }
 
-export default function ArticleCard({ article }: ArticleCardProps) {
+export default function ArticleCard({ article }: Props) {
+    const truncatedContent = article.summary
+        ? article.summary.substring(0, 150) + '...'
+        : '';
+
     return (
         <Link href={`/articles/${article.id}`}>
             <article
-                className="group h-full rounded-xl border p-6 transition-all hover:scale-[1.02] hover:shadow-lg"
+                className="group overflow-hidden rounded-xl border transition-all hover:shadow-xl"
                 style={{
                     backgroundColor: 'var(--color-bg-card)',
                     borderColor: 'var(--color-border)',
                 }}
             >
-                {/* 标题 */}
-                <h2
-                    className="mb-3 text-2xl font-bold transition-colors group-hover:text-[var(--color-primary)]"
-                    style={{ color: 'var(--color-text-primary)' }}
-                >
-                    {article.title}
-                </h2>
-
-                {/* 摘要 */}
-                <p
-                    className="mb-4 line-clamp-3"
-                    style={{ color: 'var(--color-text-secondary)' }}
-                >
-                    {article.summary}
-                </p>
-
-                {/* 标签 */}
-                {article.tags && article.tags.length > 0 && (
-                    <div className="mb-4 flex flex-wrap gap-2">
-                        {article.tags.map((tag) => (
-                            <span
-                                key={tag.id}
-                                className="rounded-full px-3 py-1 text-sm"
-                                style={{
-                                    backgroundColor: 'rgba(110, 38, 255, 0.1)',
-                                    color: 'var(--color-primary)',
-                                }}
-                            >
-                                #{tag.name}
-                            </span>
-                        ))}
+                {/* 封面图 */}
+                {article.coverImage && (
+                    <div className="relative aspect-video w-full overflow-hidden">
+                        <Image
+                            src={article.coverImage}
+                            alt={article.title}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
                     </div>
                 )}
 
-                {/* Meta 信息 */}
-                <div
-                    className="flex items-center justify-between border-t pt-4"
-                    style={{ borderColor: 'var(--color-border)' }}
-                >
-                    <div
-                        className="flex items-center gap-2"
-                        style={{ color: 'var(--color-text-muted)' }}
+                {/* 内容区 */}
+                <div className="p-6">
+                    {/* 标题 */}
+                    <h3
+                        className="mb-2 text-xl font-bold transition-colors group-hover:text-primary"
+                        style={{ color: 'var(--color-text-primary)' }}
                     >
-                        <span>{article.authorName}</span>
-                        <span>·</span>
-                        <span>{new Date(article.publishTime).toLocaleDateString('zh-CN')}</span>
-                    </div>
+                        {article.title}
+                    </h3>
 
-                    <div
-                        className="flex items-center gap-4 text-sm"
-                        style={{ color: 'var(--color-text-muted)' }}
-                    >
-                        <span>👁 {article.viewCount}</span>
-                        <span>💬 {article.commentCount}</span>
+                    {/* 摘要 */}
+                    {truncatedContent && (
+                        <p
+                            className="mb-4 text-sm line-clamp-2"
+                            style={{ color: 'var(--color-text-secondary)' }}
+                        >
+                            {truncatedContent}
+                        </p>
+                    )}
+
+                    {/* 元信息 */}
+                    <div className="flex items-center gap-4 text-sm" style={{ color: 'var(--color-text-muted)' }}>
+                        <time>{new Date(article.publishTime).toLocaleDateString('zh-CN')}</time>
+                        {article.viewCount !== undefined && <span>👁 {article.viewCount}</span>}
+                        {article.commentCount !== undefined && <span>💬 {article.commentCount}</span>}
                     </div>
                 </div>
             </article>

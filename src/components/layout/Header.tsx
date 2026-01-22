@@ -1,11 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import ThemeToggle from '@/components/ThemeToggle';
-import { useState } from 'react';
 
 export default function Header() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isSpinning, setIsSpinning] = useState(false);
 
     const handleLogoClick = (e: React.MouseEvent) => {
@@ -23,7 +23,7 @@ export default function Header() {
             }}
         >
             <nav className="container mx-auto flex h-16 items-center justify-between px-6">
-                {/* Logo */}
+                {/* Logo with spinning bird */}
                 <Link href="/" className="flex items-center gap-3" onClick={handleLogoClick}>
                     <Image
                         src="/blog-logo.png"
@@ -53,8 +53,8 @@ export default function Header() {
                     </span>
                 </Link>
 
-                {/* Navigation Links + Theme Toggle */}
-                <div className="flex items-center gap-6">
+                {/* Desktop Navigation */}
+                <div className="hidden items-center gap-8 md:flex">
                     <Link
                         href="/"
                         className="transition-colors hover:text-[var(--color-primary)]"
@@ -69,11 +69,46 @@ export default function Header() {
                     >
                         关于
                     </Link>
-
-                    {/* 主题切换按钮 */}
-                    <ThemeToggle />
                 </div>
+
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    <svg width="24" height="24" fill="none" stroke="currentColor">
+                        <path d="M3 12h18M3 6h18M3 18h18" strokeWidth="2" />
+                    </svg>
+                </button>
             </nav>
+
+            {/* Mobile Menu */}
+            {mobileMenuOpen && (
+                <div
+                    className="border-t md:hidden"
+                    style={{ borderColor: 'var(--color-border)' }}
+                >
+                    <div className="container mx-auto px-6 py-4">
+                        <Link
+                            href="/"
+                            className="block py-2 transition-colors hover:text-primary"
+                            style={{ color: 'var(--color-text-secondary)' }}
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            首页
+                        </Link>
+                        <Link
+                            href="/about"
+                            className="block py-2 transition-colors hover:text-primary"
+                            style={{ color: 'var(--color-text-secondary)' }}
+                            onClick={() => setMobileMenuOpen(false)}
+                        >
+                            关于
+                        </Link>
+                    </div>
+                </div>
+            )}
         </header>
     );
 }

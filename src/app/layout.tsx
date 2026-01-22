@@ -17,7 +17,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Personal Blog - 我的技术博客",
-  description: "基于 Next.js 14 和 Spring Boot 的现代化个人博客系统",
+  description: "基于 Next.js 16 和 Spring Boot 的现代化个人博客系统",
+  keywords: ["技术博客", "Next.js", "Spring Boot", "全栈开发"],
+  authors: [{ name: "SX Lab" }],
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    url: "http://localhost:3002",
+    siteName: "SX Lab",
+    title: "Personal Blog - 我的技术博客",
+    description: "分享技术见解，记录学习历程",
+  },
 };
 
 export default function RootLayout({
@@ -30,12 +40,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange={false}
-        >
+        <ThemeProvider>
           <Header />
           {children}
           <Footer />

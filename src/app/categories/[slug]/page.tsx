@@ -1,13 +1,37 @@
 import { getCategoryBySlug, getArticles } from '@/lib/api';
 import { ArticleListVO } from '@/lib/types';
 import ArticleCard from '@/components/article/ArticleCard';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-interface Props {
-    params: Promise<{ slug: string }>;
+interface PageProps {
+    params: { slug: string };
 }
 
-export default async function CategoryPage({ params }: Props) {
+// 动态生成分类 Metadata
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { slug } = params;
+
+    try {
+        const category = await getCategoryBySlug(slug);
+
+        return {
+            title: `${category.name} | SX Lab`,
+            description: category.description || `${category.name}分类下的所有文章`,
+            openGraph: {
+                title: `${category.name} 分类`,
+                description: category.description || `浏览 ${category.name} 分类下的所有文章`,
+                type: 'website',
+            },
+        };
+    } catch (error) {
+        return {
+            title: '分类不存在 | SX Lab',
+        };
+    }
+}
+
+export default async function CategoryPage({ params }: PageProps) {
     const { slug } = await params;
 
     let category = null;

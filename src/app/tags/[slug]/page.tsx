@@ -2,12 +2,36 @@ import { getTagBySlug, getArticles } from '@/lib/api';
 import { ArticleListVO } from '@/lib/types';
 import ArticleCard from '@/components/article/ArticleCard';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
-interface Props {
+interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
-export default async function TagPage({ params }: Props) {
+// 动态生成标签 Metadata
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { slug } = await params;
+
+    try {
+        const tag = await getTagBySlug(slug);
+
+        return {
+            title: `${tag.name} | SX Lab`,
+            description: `${tag.name} 标签下的所有文章，共 ${tag.articleCount} 篇`,
+            openGraph: {
+                title: `${tag.name} 标签`,
+                description: `浏览 ${tag.name} 标签下的所有文章`,
+                type: 'website',
+            },
+        };
+    } catch (error) {
+        return {
+            title: '标签不存在 | SX Lab',
+        };
+    }
+}
+
+export default async function TagPage({ params }: PageProps) {
     const { slug } = await params;
 
     let tag = null;

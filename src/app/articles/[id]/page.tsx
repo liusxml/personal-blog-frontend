@@ -7,9 +7,43 @@ import CommentSection from '@/components/comment/CommentSection';
 import ReadingProgress from '@/components/article/ReadingProgress';
 import ScrollToTop from '@/components/article/ScrollToTop';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 interface PageProps {
     params: Promise<{ id: string }>;
+}
+
+// 动态生成文章 Metadata（SEO优化）
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { id } = await params;
+
+    try {
+        const article = await getArticleById(id);
+
+        return {
+            title: `${article.title} | SX Lab`,
+            description: article.summary || article.title,
+            keywords: article.tags?.map(tag => tag.name) || [],
+            authors: [{ name: article.authorName || 'SX Lab' }],
+            openGraph: {
+                title: article.title,
+                description: article.summary || article.title,
+                type: 'article',
+                authors: [article.authorName || 'SX Lab'],
+                tags: article.tags?.map(tag => tag.name) || [],
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: article.title,
+                description: article.summary || article.title,
+            },
+        };
+    } catch (error) {
+        return {
+            title: '文章不存在 | SX Lab',
+            description: '您访问的文章不存在或已被删除',
+        };
+    }
 }
 
 export default async function ArticlePage({ params }: PageProps) {
