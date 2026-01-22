@@ -112,4 +112,52 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-hover);
+}/* 文章内链接增强 */
+.prose a {
+    position: relative;
+    text-decoration: none;
+    background: linear-gradient(to right, var(--color-primary), var(--color-primary)) no-repeat;
+    background-size: 0% 2px;
+    background-position: left bottom;
+    transition: background-size 0.3s ease;
+}
+
+.prose a:hover {
+    background-size: 100% 2px;
+}
+
+/* 代码块滚动条美化 */
+.prose pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+    background: rgba(110, 38, 255, 0.5);
+    border-radius: 4px;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(110, 38, 255, 0.7);
+}
+
+/* 按钮呼吸动画 */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 8px 32px rgba(110, 38, 255, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 8px 32px rgba(110, 38, 255, 0.6), 0 0 20px rgba(110, 38, 255, 0.4);
+    }
+}
+
+.pulse-glow {
+    animation: pulse-glow 2s infinite;
 }

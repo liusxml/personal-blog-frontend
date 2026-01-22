@@ -53,8 +53,8 @@ export default async function ArticlePage({ params }: PageProps) {
         <>
             <ReadingProgress />
             <main className="container mx-auto px-6 py-12">
-                <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 max-w-7xl mx-auto">
-                    <article className="flex-1 min-w-0">
+                <div className="flex flex-col xl:flex-row gap-8 xl:gap-12 max-w-6xl mx-auto">
+                    <article className="flex-1 min-w-0 max-w-4xl">
                         <ArticleContent article={article} />
                         <RelatedArticles articles={relatedArticles} />
                         <CommentSection articleId={article.id} />

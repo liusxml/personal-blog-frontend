@@ -24,15 +24,13 @@ export default function ScrollToTop() {
         <button
             onClick={scrollToTop}
             className="
-        fixed bottom-8 right-8 w-12 h-12 rounded-full shadow-2xl
-        flex items-center justify-center z-40
-        transition-all duration-300
-        hover:scale-110 hover:shadow-primary/50
-      "
-            style={{
-                backgroundColor: 'var(--color-primary)',
-                color: 'white'
-            }}
+                fixed bottom-8 right-8 w-14 h-14 rounded-full
+                bg-gradient-to-br from-primary to-purple-600
+                flex items-center justify-center z-40
+                transition-all duration-300
+                hover:scale-110
+                pulse-glow
+            "
             aria-label="返回顶部"
         >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
