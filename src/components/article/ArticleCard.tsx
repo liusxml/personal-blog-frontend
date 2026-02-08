@@ -7,10 +7,6 @@ interface Props {
 }
 
 export default function ArticleCard({ article }: Props) {
-    const truncatedContent = article.summary
-        ? article.summary.substring(0, 150) + '...'
-        : '';
-
     return (
         <Link href={`/articles/${article.id}`}>
             <article
@@ -37,19 +33,19 @@ export default function ArticleCard({ article }: Props) {
                 <div className="p-6">
                     {/* 标题 */}
                     <h3
-                        className="mb-2 text-xl font-bold transition-colors group-hover:text-primary"
+                        className="mb-2 text-xl font-bold transition-colors group-hover:text-primary line-clamp-2"
                         style={{ color: 'var(--color-text-primary)' }}
                     >
                         {article.title}
                     </h3>
 
-                    {/* 摘要 */}
-                    {truncatedContent && (
+                    {/* 摘要 - 固定3行显示 */}
+                    {article.summary && (
                         <p
-                            className="mb-4 text-sm line-clamp-2"
+                            className="mb-4 text-sm line-clamp-3"
                             style={{ color: 'var(--color-text-secondary)' }}
                         >
-                            {truncatedContent}
+                            {article.summary}
                         </p>
                     )}
 
