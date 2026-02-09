@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArticleListVO } from '@/lib/types';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 interface Props {
     article: ArticleListVO;
@@ -19,8 +19,9 @@ export default function ArticleCard({ article }: Props) {
                 {/* 封面图 */}
                 {article.coverImage && (
                     <div className="relative aspect-video w-full overflow-hidden">
-                        <Image
+                        <ImageWithFallback
                             src={article.coverImage}
+                            fileId={article.coverImageId}
                             alt={article.title}
                             fill
                             className="object-cover transition-transform duration-300 group-hover:scale-105"

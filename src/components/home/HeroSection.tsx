@@ -1,41 +1,31 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArticleListVO } from '@/lib/types';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
 
 interface Props {
     article: ArticleListVO;
 }
 
 export default function HeroSection({ article }: Props) {
-    // 清理摘要中的元数据
-    const cleanSummary = (summary: string) => {
-        return summary
-            .replace(/^---[\s\S]*?---/g, '')
-            .replace(/sidebar_position:\s*\d+/g, '')
-            .replace(/^[📝✨🎯✅❌]+\s*/gm, '')
-            .trim()
-            .substring(0, 200);
-    };
-
     return (
         <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
             {/* 大图背景 */}
             {article.coverImage ? (
                 <>
-                    <Image
+                    <ImageWithFallback
                         src={article.coverImage}
+                        fileId={article.coverImageId}
                         alt={article.title}
                         fill
                         priority
+                        unoptimized
                         className="object-cover"
                         sizes="100vw"
                     />
-                    {/* 深色遮罩 */}
-                    <div
-                        className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"
-                    />
+                    {/* 彩色渐变遮罩 */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 via-purple-500/30 to-blue-500/40" />
                 </>
             ) : (
                 /* 无图片时的渐变背景 */
@@ -86,7 +76,7 @@ export default function HeroSection({ article }: Props) {
                             textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
                         }}
                     >
-                        {cleanSummary(article.summary || '')}
+                        {article.summary || ''}
                     </p>
 
                     {/* 元信息 */}
