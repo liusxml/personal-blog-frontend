@@ -37,8 +37,8 @@ COPY . .
 # ── NEXT_PUBLIC_API_URL：构建时注入，打包进客户端 JS ─────────────────────────
 # 此变量在浏览器端使用（如 API 请求地址），必须在构建时确定
 # 默认值指向生产环境的后端 API 域名
-ARG NEXT_PUBLIC_API_URL=https://api.chonkybird.com
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_API_BASE_URL=https://api.chonkybird.com
+ENV NEXT_PUBLIC_API_BASE_URL=$NEXT_PUBLIC_API_BASE_URL
 
 # NEXT_TELEMETRY_DISABLED=1：禁用 Next.js 遥测数据收集（官方隐私保护建议）
 ENV NEXT_TELEMETRY_DISABLED=1

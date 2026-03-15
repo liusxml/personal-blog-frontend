@@ -49,7 +49,7 @@ jobs:
           # 此变量在浏览器端使用，必须在构建时确定，无法在运行时通过 ENV 修改
           # 如需修改生产 API 地址，只需更新 GitHub Variables 并重新触发构建
           build-args: |
-            NEXT_PUBLIC_API_URL=https://api.chonkybird.com
+            NEXT_PUBLIC_API_BASE_URL=https://api.chonkybird.com
           # cache-from/cache-to: 启用 GitHub Actions 的构建缓存（GHA Cache）
           # 第一次构建后，后续构建会复用缓存，显著加快速度（npm 包不用重复下载）
           cache-from: type=gha
