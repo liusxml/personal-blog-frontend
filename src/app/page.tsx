@@ -5,6 +5,11 @@ import NewsletterSubscribe from '@/components/home/NewsletterSubscribe';
 import { getArticles } from '@/lib/api';
 import { ArticleListVO } from '@/lib/types';
 
+// 强制动态渲染：禁用 Next.js Full Routes Cache
+// 每次请求都重新从后端取数据，确保新发布的文章能立即显示
+// 参考：https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   // 获取文章列表（服务端渲染）
   let articles: ArticleListVO[] = [];
