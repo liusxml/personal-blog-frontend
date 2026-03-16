@@ -93,9 +93,59 @@ body {
   background: rgba(255, 0, 110, 0.7);
 }
 
-/* 文章内链接增强 */
+/* ========================================
+   Prose (文章正文) 颜色覆盖 - 暗色主题
+   Typography 插件默认是亮色主题颜色，需显式覆盖
+   ======================================== */
+
+/* 正文段落和列表文本 */
+.prose {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* 所有标题：显式设置白色，覆盖插件默认的暗色 */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: #FFFFFF;
+}
+
+/* 列表项 */
+.prose li {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* 有序列表编号 & 无序列表圆点颜色 */
+.prose ul > li::before,
+.prose ol > li::before {
+  color: var(--color-primary);
+}
+
+/* 表格标题行 */
+.prose thead th {
+  color: #FFFFFF;
+}
+
+/* 表格内容行 */
+.prose tbody td {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* strong / bold 文本 */
+.prose strong {
+  color: #FFFFFF;
+}
+
+/* blockquote 引用文本 */
+.prose blockquote p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* 文章内链接 */
 .prose a {
   position: relative;
+  color: var(--color-primary);
   text-decoration: none;
   background: linear-gradient(to right, var(--color-primary), var(--color-primary)) no-repeat;
   background-size: 0% 2px;
@@ -106,6 +156,7 @@ body {
 .prose a:hover {
   background-size: 100% 2px;
 }
+
 
 /* 代码块滚动条美化 */
 .prose pre::-webkit-scrollbar {
