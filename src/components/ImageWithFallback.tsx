@@ -6,7 +6,7 @@ import env from '@/config/env'
 
 interface ImageWithFallbackProps extends Omit<ImageProps, 'src' | 'onError'> {
     src: string
-    fileId?: number
+    fileId?: string
     fallbackSrc?: string
 }
 

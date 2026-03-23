@@ -37,7 +37,7 @@ export interface ArticleListVO {
     title: string;
     summary: string;
     coverImage?: string;
-    coverImageId?: number;
+    coverImageId?: string;
     categoryName?: string;
     tags?: TagVO[];
     authorName: string;
