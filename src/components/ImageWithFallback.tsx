@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image, { ImageProps } from 'next/image'
+import env from '@/config/env'
 
 interface ImageWithFallbackProps extends Omit<ImageProps, 'src' | 'onError'> {
     src: string
@@ -30,7 +31,7 @@ export function ImageWithFallback({
         try {
             // 调用后端API获取新URL（7天有效）
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/api/v1/files/${fileId}/access-url?expireMinutes=10080`
+                `${env.API_BASE_URL}/api/v1/files/${fileId}/access-url?expireMinutes=10080`
             )
 
             const result = await response.json()
