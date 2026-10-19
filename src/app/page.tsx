@@ -1,14 +1,14 @@
-import ArticleList from '@/components/article/ArticleList';
-import HeroSection from '@/components/home/HeroSection';
-import FeaturedArticles from '@/components/home/FeaturedArticles';
-import NewsletterSubscribe from '@/components/home/NewsletterSubscribe';
-import { getArticles } from '@/lib/api';
-import { ArticleListVO } from '@/lib/types';
+import ArticleList from "@/components/article/ArticleList";
+import HeroSection from "@/components/home/HeroSection";
+import FeaturedArticles from "@/components/home/FeaturedArticles";
+import NewsletterSubscribe from "@/components/home/NewsletterSubscribe";
+import { getArticles } from "@/lib/api";
+import { ArticleListVO } from "@/lib/types";
 
 // 强制动态渲染：禁用 Next.js Full Routes Cache
 // 每次请求都重新从后端取数据，确保新发布的文章能立即显示
 // 参考：https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   // 获取文章列表（服务端渲染）
@@ -19,8 +19,8 @@ export default async function Home() {
     const pageResult = await getArticles({ current: 1, size: 10 });
     articles = pageResult.records;
   } catch (err) {
-    error = err instanceof Error ? err.message : '获取文章失败';
-    console.error('Failed to fetch articles:', err);
+    error = err instanceof Error ? err.message : "获取文章失败";
+    console.error("Failed to fetch articles:", err);
   }
 
   // 最新文章（用于 Hero）
@@ -37,17 +37,12 @@ export default async function Home() {
           <div
             className="rounded-xl border p-8 text-center"
             style={{
-              backgroundColor: 'var(--color-bg-card)',
-              borderColor: 'var(--color-border)',
+              backgroundColor: "var(--color-bg-card)",
+              borderColor: "var(--color-border)",
             }}
           >
-            <p style={{ color: 'var(--color-error)' }}>
-              {error}
-            </p>
-            <p
-              className="mt-2 text-sm"
-              style={{ color: 'var(--color-text-muted)' }}
-            >
+            <p style={{ color: "var(--color-error)" }}>{error}</p>
+            <p className="mt-2 text-sm" style={{ color: "var(--color-text-muted)" }}>
               请确保后端服务正在运行（http://localhost:8080）
             </p>
           </div>
@@ -58,23 +53,19 @@ export default async function Home() {
           {latestArticle && <HeroSection article={latestArticle} />}
 
           {/* Featured 区域 */}
-          {featuredArticles.length > 0 && (
-            <FeaturedArticles articles={featuredArticles} />
-          )}
+          {featuredArticles.length > 0 && <FeaturedArticles articles={featuredArticles} />}
 
           {/* Recent 最新文章 */}
-          <section className="py-16 bg-gradient-to-b from-transparent to-black/20">
+          <section className="bg-gradient-to-b from-transparent to-black/20 py-16">
             <div className="container mx-auto px-6">
-              <div className="text-center mb-12">
+              <div className="mb-12 text-center">
                 <h2
-                  className="text-3xl md:text-4xl font-bold mb-4"
-                  style={{ color: 'var(--color-text-primary)' }}
+                  className="mb-4 text-3xl font-bold md:text-4xl"
+                  style={{ color: "var(--color-text-primary)" }}
                 >
                   最新文章
                 </h2>
-                <p style={{ color: 'var(--color-text-secondary)' }}>
-                  探索更多技术见解
-                </p>
+                <p style={{ color: "var(--color-text-secondary)" }}>探索更多技术见解</p>
               </div>
               <ArticleList articles={recentArticles} />
             </div>

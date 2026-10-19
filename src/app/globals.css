@@ -12,19 +12,19 @@
      ======================================== */
 
   /* === 主色调（橙金系）=== */
-  --color-primary: #FF9E00;
-  --color-primary-hover: #FFC857;
+  --color-primary: #ff9e00;
+  --color-primary-hover: #ffc857;
 
   /* === 强调色（深橙）=== */
-  --color-accent: #E68900;
-  --color-accent-light: #FFB627;
+  --color-accent: #e68900;
+  --color-accent-light: #ffb627;
 
   /* === 交互色（霓虹蓝）=== */
-  --color-interactive: #0055FF;
+  --color-interactive: #0055ff;
 
   /* === 背景色系（深灰蓝）=== */
-  --color-bg-main: #0F1419;
-  --color-bg-card: #1A1D24;
+  --color-bg-main: #0f1419;
+  --color-bg-card: #1a1d24;
   --color-bg-elevated: #252830;
 
   /* === 边框色 === */
@@ -32,18 +32,18 @@
   --color-border-hover: rgba(255, 158, 0, 0.4);
 
   /* === 文字色 === */
-  --color-text-primary: #FFFFFF;
+  --color-text-primary: #ffffff;
   --color-text-secondary: rgba(255, 255, 255, 0.7);
   --color-text-muted: rgba(255, 255, 255, 0.5);
 
   /* === 装饰色 - 霓虹蓝 === */
-  --color-accent-blue: #0055FF;
+  --color-accent-blue: #0055ff;
 
   /* === 状态色 === */
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-error: #EF4444;
-  --color-info: #3B82F6;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
 }
 
 @theme inline {
@@ -64,7 +64,9 @@ body {
   min-height: 100vh;
 
   /* 主题切换平滑过渡动画 🎨 */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* 全局过渡动画优化 */
@@ -108,7 +110,7 @@ body {
 .prose h2,
 .prose h3,
 .prose h4 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* 列表项 */
@@ -124,7 +126,7 @@ body {
 
 /* 表格标题行 */
 .prose thead th {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* 表格内容行 */
@@ -134,7 +136,7 @@ body {
 
 /* strong / bold 文本 */
 .prose strong {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* blockquote 引用文本 */
@@ -157,7 +159,6 @@ body {
   background-size: 100% 2px;
 }
 
-
 /* 代码块滚动条美化 */
 .prose pre::-webkit-scrollbar {
   height: 8px;
@@ -179,14 +180,15 @@ body {
 
 /* 按钮呼吸动画 */
 @keyframes pulse-glow {
-
   0%,
   100% {
     box-shadow: 0 8px 32px rgba(255, 158, 0, 0.4);
   }
 
   50% {
-    box-shadow: 0 8px 32px rgba(255, 158, 0, 0.6), 0 0 20px rgba(255, 158, 0, 0.4);
+    box-shadow:
+      0 8px 32px rgba(255, 158, 0, 0.6),
+      0 0 20px rgba(255, 158, 0, 0.4);
   }
 }
 

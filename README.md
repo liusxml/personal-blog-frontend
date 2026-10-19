@@ -6,19 +6,19 @@
 
 ## 技术栈
 
-| 模块 | 技术 | 版本 |
-|:---|:---|:---|
-| 核心框架 | Next.js | 16.x（App Router） |
-| UI 库 | React | 19.x |
-| 语言 | TypeScript | 5.x |
-| 样式 | Tailwind CSS | v4 |
-| Markdown 渲染 | react-markdown | v10 |
-| 代码高亮 | rehype-highlight + highlight.js | v7 / v11 |
-| 文章目录锚点 | rehype-slug | v6 |
-| GFM 语法支持 | remark-gfm | v4 |
-| 排版样式 | @tailwindcss/typography | v0.5 |
-| 图片灯箱 | yet-another-react-lightbox | v3 |
-| 字体 | Geist / Geist Mono（Google Fonts） | — |
+| 模块          | 技术                               | 版本               |
+| :------------ | :--------------------------------- | :----------------- |
+| 核心框架      | Next.js                            | 16.x（App Router） |
+| UI 库         | React                              | 19.x               |
+| 语言          | TypeScript                         | 5.x                |
+| 样式          | Tailwind CSS                       | v4                 |
+| Markdown 渲染 | react-markdown                     | v10                |
+| 代码高亮      | rehype-highlight + highlight.js    | v7 / v11           |
+| 文章目录锚点  | rehype-slug                        | v6                 |
+| GFM 语法支持  | remark-gfm                         | v4                 |
+| 排版样式      | @tailwindcss/typography            | v0.5               |
+| 图片灯箱      | yet-another-react-lightbox         | v3                 |
+| 字体          | Geist / Geist Mono（Google Fonts） | —                  |
 
 ---
 
@@ -99,11 +99,11 @@ personal-blog-frontend/
 
 使用 `force-dynamic` 强制服务端动态渲染，每次请求实时从后端获取最新文章，分三个区域展示：
 
-| 区域 | 内容 | 来源 |
-|:---|:---|:---|
-| **英雄区（HeroSection）** | 最新文章（第 1 篇）+ 封面大图背景 + 渐变遮罩 + 动画 CTA 按钮 | articles[0] |
-| **精选文章（FeaturedArticles）** | 3 张精选文章卡片网格 | articles[1–3] |
-| **最新文章列表** | 最多 6 篇文章卡片 | articles[4–9] |
+| 区域                             | 内容                                                         | 来源          |
+| :------------------------------- | :----------------------------------------------------------- | :------------ |
+| **英雄区（HeroSection）**        | 最新文章（第 1 篇）+ 封面大图背景 + 渐变遮罩 + 动画 CTA 按钮 | articles[0]   |
+| **精选文章（FeaturedArticles）** | 3 张精选文章卡片网格                                         | articles[1–3] |
+| **最新文章列表**                 | 最多 6 篇文章卡片                                            | articles[4–9] |
 
 ### 文章详情页（`/articles/[id]`）
 
@@ -135,13 +135,13 @@ personal-blog-frontend/
 
 自定义各 Markdown 元素的渲染逻辑：
 
-| 元素 | 定制内容 |
-|:---|:---|
-| `img` | 圆角 + 大阴影 + hover 过渡效果 |
-| `pre`（代码块） | 深色背景 + 圆角 + hover 显示复制按钮 |
-| `blockquote` | 根据 💡 / ⚠️ / ✨ 自动变色（蓝 / 黄 / 绿） |
-| `table` | 全宽 + 圆角 + 渐变表头 + 边框 |
-| `code`（行内代码） | 粉色文字 + 半透明背景 |
+| 元素               | 定制内容                                   |
+| :----------------- | :----------------------------------------- |
+| `img`              | 圆角 + 大阴影 + hover 过渡效果             |
+| `pre`（代码块）    | 深色背景 + 圆角 + hover 显示复制按钮       |
+| `blockquote`       | 根据 💡 / ⚠️ / ✨ 自动变色（蓝 / 黄 / 绿） |
+| `table`            | 全宽 + 圆角 + 渐变表头 + 边框              |
+| `code`（行内代码） | 粉色文字 + 半透明背景                      |
 
 ### TableOfContents — 文章目录
 
@@ -164,16 +164,16 @@ personal-blog-frontend/
 
 ## SEO 优化
 
-| 功能 | 实现方式 |
-|:---|:---|
-| 页面标题 | 根布局设置默认，文章页 `generateMetadata` 动态覆盖 |
-| Meta Description | 文章摘要或标题 |
-| Open Graph | 文章标题、描述、作者、标签 |
-| Twitter Card | `summary_large_image` 格式 |
-| Sitemap | `sitemap.ts` 动态生成，含首页、关于页、所有文章 URL |
-| Robots.txt | `robots.ts` 自动生成，禁止抓取 `/api/`、`/_next/` |
-| 语言声明 | `<html lang="zh-CN">` |
-| 语义化 HTML | `<header>` `<article>` `<nav>` `<aside>` `<main>` 等 |
+| 功能             | 实现方式                                             |
+| :--------------- | :--------------------------------------------------- |
+| 页面标题         | 根布局设置默认，文章页 `generateMetadata` 动态覆盖   |
+| Meta Description | 文章摘要或标题                                       |
+| Open Graph       | 文章标题、描述、作者、标签                           |
+| Twitter Card     | `summary_large_image` 格式                           |
+| Sitemap          | `sitemap.ts` 动态生成，含首页、关于页、所有文章 URL  |
+| Robots.txt       | `robots.ts` 自动生成，禁止抓取 `/api/`、`/_next/`    |
+| 语言声明         | `<html lang="zh-CN">`                                |
+| 语义化 HTML      | `<header>` `<article>` `<nav>` `<aside>` `<main>` 等 |
 
 ---
 
@@ -209,30 +209,30 @@ Next.js Server（Node.js）
 
 ### 图片域名白名单（`next.config.ts`）
 
-| 域名 | 用途 |
-|:---|:---|
+| 域名             | 用途                         |
+| :--------------- | :--------------------------- |
 | `s3.bitiful.net` | Bitiful OSS 存储的文章封面图 |
-| `www.bing.com` | 必应壁纸图片 |
+| `www.bing.com`   | 必应壁纸图片                 |
 
 ---
 
 ## API 接口对照
 
-| 功能 | 接口 |
-|:---|:---|
+| 功能             | 接口                                                     |
+| :--------------- | :------------------------------------------------------- |
 | 文章列表（分页） | `GET /api/v1/articles?current=&size=&categoryId=&tagId=` |
-| 文章详情 | `GET /api/v1/articles/{id}` |
-| 相关文章推荐 | `GET /api/v1/articles/{id}/related?limit=5` |
-| 分类树 | `GET /api/v1/categories/tree` |
-| 分类列表 | `GET /api/v1/categories` |
-| 按 slug 获取分类 | `GET /api/v1/categories/slug/{slug}` |
-| 标签列表 | `GET /api/v1/tags?orderBy=article_count&limit=` |
-| 热门标签 | `GET /api/v1/tags/hot?limit=20` |
-| 按 slug 获取标签 | `GET /api/v1/tags/slug/{slug}` |
-| 评论树 | `GET /api/v1/comments/tree?targetType=ARTICLE&targetId=` |
-| 发表评论 | `POST /api/v1/comments` |
-| 回复评论 | `POST /api/v1/comments/reply` |
-| 点赞评论 | `POST /api/v1/comments/{id}/like` |
+| 文章详情         | `GET /api/v1/articles/{id}`                              |
+| 相关文章推荐     | `GET /api/v1/articles/{id}/related?limit=5`              |
+| 分类树           | `GET /api/v1/categories/tree`                            |
+| 分类列表         | `GET /api/v1/categories`                                 |
+| 按 slug 获取分类 | `GET /api/v1/categories/slug/{slug}`                     |
+| 标签列表         | `GET /api/v1/tags?orderBy=article_count&limit=`          |
+| 热门标签         | `GET /api/v1/tags/hot?limit=20`                          |
+| 按 slug 获取标签 | `GET /api/v1/tags/slug/{slug}`                           |
+| 评论树           | `GET /api/v1/comments/tree?targetType=ARTICLE&targetId=` |
+| 发表评论         | `POST /api/v1/comments`                                  |
+| 回复评论         | `POST /api/v1/comments/reply`                            |
+| 点赞评论         | `POST /api/v1/comments/{id}/like`                        |
 
 ---
 
@@ -260,19 +260,19 @@ npm run dev
 
 ### 可用脚本
 
-| 命令 | 说明 |
-|:---|:---|
-| `npm run dev` | 开发服务器（端口 3002，热重载） |
-| `npm run build` | 构建生产包（standalone 输出） |
-| `npm run start` | 启动生产服务（需先 build） |
-| `npm run lint` | ESLint 代码检查 |
+| 命令            | 说明                            |
+| :-------------- | :------------------------------ |
+| `npm run dev`   | 开发服务器（端口 3002，热重载） |
+| `npm run build` | 构建生产包（standalone 输出）   |
+| `npm run start` | 启动生产服务（需先 build）      |
+| `npm run lint`  | ESLint 代码检查                 |
 
 ### 环境变量
 
-| 变量 | 说明 | 默认值 |
-|:---|:---|:---|
+| 变量                       | 说明                                           | 默认值                  |
+| :------------------------- | :--------------------------------------------- | :---------------------- |
 | `NEXT_PUBLIC_API_BASE_URL` | 后端 API 基础 URL（**构建时**打包进客户端 JS） | `http://localhost:8080` |
-| `NEXT_PUBLIC_SITE_URL` | 站点根 URL（用于 sitemap / robots 生成） | `http://localhost:3002` |
+| `NEXT_PUBLIC_SITE_URL`     | 站点根 URL（用于 sitemap / robots 生成）       | `http://localhost:3002` |
 
 > ⚠️ `NEXT_PUBLIC_API_BASE_URL` 在 `next build` 时打包进客户端 JS，**运行时无法通过环境变量修改**。如需指向自定义后端，请重新构建镜像。
 
@@ -282,11 +282,11 @@ npm run dev
 
 ### Docker 多阶段构建
 
-| 阶段 | 基础镜像 | 作用 |
-|:---|:---|:---|
-| `deps` | `node:20-alpine` | 安装 npm 依赖（BuildKit 缓存挂载加速） |
+| 阶段      | 基础镜像         | 作用                                    |
+| :-------- | :--------------- | :-------------------------------------- |
+| `deps`    | `node:20-alpine` | 安装 npm 依赖（BuildKit 缓存挂载加速）  |
 | `builder` | `node:20-alpine` | 执行 `next build`，生成 standalone 产物 |
-| `runner` | `node:20-alpine` | 仅包含运行时产物，最小化镜像体积 |
+| `runner`  | `node:20-alpine` | 仅包含运行时产物，最小化镜像体积        |
 
 关键配置：
 
@@ -311,10 +311,10 @@ Checkout → Docker Login → Setup Buildx → Build & Push
 
 **所需 GitHub Secrets / Variables：**
 
-| 名称 | 类型 | 说明 |
-|:---|:---|:---|
-| `DOCKERHUB_USERNAME` | Variable | Docker Hub 用户名 |
-| `DOCKERHUB_TOKEN` | Secret | Docker Hub Access Token |
+| 名称                 | 类型     | 说明                    |
+| :------------------- | :------- | :---------------------- |
+| `DOCKERHUB_USERNAME` | Variable | Docker Hub 用户名       |
+| `DOCKERHUB_TOKEN`    | Secret   | Docker Hub Access Token |
 
 ### 运行 Docker 镜像
 
@@ -333,14 +333,14 @@ docker run -d \
 ```tsx
 // ✅ 默认：Server Component（SSR），直接 async/await，无需标注
 export default async function ArticlesPage() {
-  const articles = await getArticles()
-  return <ArticleList articles={articles} />
+  const articles = await getArticles();
+  return <ArticleList articles={articles} />;
 }
 
 // ✅ 需要客户端交互（useState / useEffect / 浏览器 API）时才声明 'use client'
-'use client'
+("use client");
 export default function TableOfContents({ content }: Props) {
-  const [activeId, setActiveId] = useState('')
+  const [activeId, setActiveId] = useState("");
   // ...
 }
 ```
@@ -349,13 +349,10 @@ export default function TableOfContents({ content }: Props) {
 
 ```ts
 // ✅ 服务端直接 await，数据随 HTML 返回给浏览器
-const article = await getArticleById(id)
+const article = await getArticleById(id);
 
 // ✅ 并行请求，减少总等待时间
-const [article, related] = await Promise.all([
-  getArticleById(id),
-  getRelatedArticles(id, 5),
-])
+const [article, related] = await Promise.all([getArticleById(id), getRelatedArticles(id, 5)]);
 ```
 
 ### 样式规范
@@ -367,10 +364,10 @@ const [article, related] = await Promise.all([
 
 ### 文件命名规范
 
-| 类型 | 命名规范 | 示例 |
-|:---|:---|:---|
-| 页面 | `page.tsx` | `app/articles/[id]/page.tsx` |
-| 布局 | `layout.tsx` | `app/layout.tsx` |
-| 组件 | PascalCase | `ArticleContent.tsx` |
-| 工具函数 | camelCase | `api.ts`, `types.ts` |
-| 配置 | camelCase | `env.ts` |
+| 类型     | 命名规范     | 示例                         |
+| :------- | :----------- | :--------------------------- |
+| 页面     | `page.tsx`   | `app/articles/[id]/page.tsx` |
+| 布局     | `layout.tsx` | `app/layout.tsx`             |
+| 组件     | PascalCase   | `ArticleContent.tsx`         |
+| 工具函数 | camelCase    | `api.ts`, `types.ts`         |
+| 配置     | camelCase    | `env.ts`                     |
